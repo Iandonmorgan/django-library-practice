@@ -1,2 +1,2 @@
 class Connection:
-    db_path = "/absolute/path/to/library-management/libraryproject/db.sqlite3"
+    db_path = "/Users/landonmorgan/workspace/backend/library-management/libraryproject/db.sqlite3"
