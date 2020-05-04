@@ -8,7 +8,7 @@ from ..connection import Connection
 def book_list(request):
     if request.method == 'GET':
         with sqlite3.connect(Connection.db_path) as conn:
-            conn.row_factory = model_factory(Book)
+            conn.row_factory = sqlite3.Row
 
             db_cursor = conn.cursor()
             db_cursor.execute("""
@@ -18,6 +18,7 @@ def book_list(request):
                 b.isbn,
                 b.author,
                 b.year_published,
+                b.publisher,
                 b.librarian_id,
                 b.library_id
             FROM libraryapp_book b
