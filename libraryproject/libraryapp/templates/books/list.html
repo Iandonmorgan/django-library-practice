@@ -10,11 +10,9 @@
 
     <ol>
     {% for book in all_books %}
-        <li>
-            {{ book.title }}
-            by {{book.author}}
-            published in {{book.year_published}}
-        </li>
+      {% if book.year_published > 2000 %}
+        <li>{{ book.title }} by {{book.author}} published in {{book.year_published}}</li>
+      {% endif %}
     {% endfor %}
     </ol>
   </body>
