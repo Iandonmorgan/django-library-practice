@@ -12,7 +12,7 @@ def list_librarians(request):
         db_cursor.execute("""
         SELECT
             l.id,
-            li.id,
+            l.library_id,
             l.user_id,
             u.first_name,
             u.last_name,
