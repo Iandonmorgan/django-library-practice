@@ -3,7 +3,7 @@ from django.urls import reverse
 
 class Library (models.Model):
 
-    title = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
 
     class Meta:
