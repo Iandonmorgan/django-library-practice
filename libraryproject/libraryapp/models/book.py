@@ -8,10 +8,10 @@ class Book (models.Model):
     title = models.CharField(max_length=50)
     isbn = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
-    year_published = models.IntergerField(max_length=10)
+    year_published = models.IntegerField()
     publisher = models.CharField(max_length=50)
-    libraryId = models.ForeignKey(Library, on_delete=models.CASCADE)
-    librarianId = models.ForeignKey(Librarian, on_delete=models.CASCADE)
+    library = models.ForeignKey(Library, on_delete=models.CASCADE)
+    librarian = models.ForeignKey(Librarian, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("book")
