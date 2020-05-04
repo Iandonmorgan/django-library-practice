@@ -10,8 +10,8 @@ class Book (models.Model):
     author = models.CharField(max_length=50)
     year_published = models.IntergerField(max_length=10)
     publisher = models.CharField(max_length=50)
-    location = models.ForeignKey(Library, on_delete=models.CASCADE)
-    librarian = models.ForeignKey(Librarian, on_delete=models.CASCADE)
+    libraryId = models.ForeignKey(Library, on_delete=models.CASCADE)
+    librarianId = models.ForeignKey(Librarian, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("book")
