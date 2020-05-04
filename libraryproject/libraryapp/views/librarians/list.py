@@ -10,15 +10,16 @@ def list_librarians(request):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        select
+        SELECT
             l.id,
-            l.library_id,
+            li.id,
             l.user_id,
             u.first_name,
             u.last_name,
             u.email
-        from libraryapp_librarian l
-        join auth_user u on l.user_id = u.id
+        FROM libraryapp_librarian l
+        JOIN auth_user u on l.user_id = u.id
+        JOIN libraryapp_library li on l.library_id = li.id
         """)
 
         all_librarians = []
@@ -27,7 +28,7 @@ def list_librarians(request):
         for row in dataset:
             lib = Librarian()
             lib.id = row["id"]
-            lib.library = row["library_id"]
+            lib.library_id = row["library_id"]
             lib.user_id = row["user_id"]
             lib.first_name = row["first_name"]
             lib.last_name = row["last_name"]
