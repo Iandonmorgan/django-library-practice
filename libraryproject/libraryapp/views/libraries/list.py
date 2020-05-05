@@ -3,7 +3,7 @@ from django.shortcuts import render
 from libraryapp.models import Library
 from ..connection import Connection
 
-
+@login_required
 def list_libraries(request):
     with sqlite3.connect(Connection.db_path) as conn:
         conn.row_factory = sqlite3.Row
