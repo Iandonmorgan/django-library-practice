@@ -12,8 +12,8 @@
     {% for book in all_books %}
       {% if book.year_published > 2000 %}
         <li>
-          <a href="{% url 'libraryapp:book' book.id %}"> {{ book.title }} </a>
-          by {{book.author}} published in {{book.year_published}}
+          <a href="{% url 'libraryapp:book' book.id %}"> {{ book.title }}</a>
+           by {{book.author}} published in {{book.year_published}}
         </li>
       {% endif %}
     {% endfor %}
