@@ -3,3 +3,6 @@ from .libraries.list import list_libraries
 from .librarians.list import list_librarians
 from .home import home
 from .auth.logout import logout_user
+from .books.form import book_form
+from .libraries.form import library_form
+# from .librarians.form import librarian_form

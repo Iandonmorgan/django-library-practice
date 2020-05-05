@@ -14,4 +14,4 @@ class Library (models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("library _detail", kwargs={"pk": self.pk})
+        return reverse("library_detail", kwargs={"pk": self.pk})
