@@ -17,7 +17,9 @@ def list_librarians(request):
             l.user_id,
             u.first_name,
             u.last_name,
-            u.email
+            u.email,
+            li.name,
+            li.address
         FROM libraryapp_librarian l
         JOIN auth_user u on l.user_id = u.id
         JOIN libraryapp_library li on l.library_id = li.id
