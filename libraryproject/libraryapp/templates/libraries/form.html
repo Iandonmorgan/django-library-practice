@@ -1,12 +1,4 @@
 {% extends 'shared/base.html' %}
-{% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Bangazon</title>
-  </head>
-  <body>
 {% block content %}
     <h1>Create Library</h1>
     <form action="{% url 'libraryapp:libraries' %}" method="post">
@@ -22,5 +14,3 @@
       <input type="submit" value="CREATE" />
     </form>
 {% endblock %}
-  </body>
-</html>
