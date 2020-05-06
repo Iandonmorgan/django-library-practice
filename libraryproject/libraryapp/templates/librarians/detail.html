@@ -1,3 +1,4 @@
+{% extends 'shared/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -6,7 +7,9 @@
     <title>Library</title>
   </head>
   <body>
+{% block content %}
     <h1>{{ librarian.first_name }} {{ librarian.last_name }}</h1>
     <p><b>Library: </b>{{ librarian.name }} {{ librarian.address }}</p>
+{% endblock %}
   </body>
 </html>
