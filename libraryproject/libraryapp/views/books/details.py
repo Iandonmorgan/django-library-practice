@@ -28,6 +28,7 @@ def get_book(book_id):
 
         return db_cursor.fetchone()
 
+
 @login_required
 def book_details(request, book_id):
     if request.method == 'GET':
@@ -56,11 +57,11 @@ def book_details(request, book_id):
                     library_id = ?
                 WHERE id = ?
                 """,
-                (
-                    form_data['title'], form_data['author'],
-                    form_data['isbn'], form_data['publisher'], form_data['year_published'],
-                    form_data["library"], book_id,
-                ))
+                                  (
+                                      form_data['title'], form_data['author'],
+                                      form_data['isbn'], form_data['publisher'], form_data['year_published'],
+                                      form_data["library"], book_id,
+                                  ))
 
             return redirect(reverse('libraryapp:books'))
 

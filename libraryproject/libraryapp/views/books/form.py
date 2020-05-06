@@ -23,6 +23,7 @@ def get_libraries():
 
         return db_cursor.fetchall()
 
+
 @login_required
 def book_form(request):
     if request.method == 'GET':
@@ -33,6 +34,7 @@ def book_form(request):
         }
 
         return render(request, template, context)
+
 
 @login_required
 def book_edit_form(request, book_id):
