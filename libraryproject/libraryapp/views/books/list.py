@@ -10,38 +10,7 @@ from django.shortcuts import redirect
 @login_required
 def book_list(request):
     if request.method == 'GET':
-        with sqlite3.connect(Connection.db_path) as conn:
-            conn.row_factory = sqlite3.Row
-
-            db_cursor = conn.cursor()
-            db_cursor.execute("""
-            SELECT
-                b.id,
-                b.title,
-                b.isbn,
-                b.author,
-                b.year_published,
-                b.publisher,
-                b.librarian_id,
-                b.library_id
-            FROM libraryapp_book b
-            """)
-
-            all_books = []
-            dataset = db_cursor.fetchall()
-
-            for row in dataset:
-                book = Book()
-                book.id = row['id']
-                book.title = row['title']
-                book.isbn = row['isbn']
-                book.author = row['author']
-                book.publisher = row['publisher']
-                book.year_published = row['year_published']
-                book.librarian_id = row['librarian_id']
-                book.library_id = row['library_id']
-
-                all_books.append(book)
+        all_books = Book.objects.all()
 
         template = 'books/list.html'
         context = {
@@ -52,19 +21,15 @@ def book_list(request):
     elif request.method == 'POST':
         form_data = request.POST
 
-    with sqlite3.connect(Connection.db_path) as conn:
-        db_cursor = conn.cursor()
+        new_book = Book()
+        new_book.title = form_data['title']
+        new_book.author = form_data['author']
+        new_book.isbn = form_data['isbn']
+        new_book.publisher = form_data['publisher']
+        new_book.year_published = form_data['year_published']
+        new_book.librarian_id = request.user.librarian.id
+        new_book.library_id = form_data['library']
 
-        db_cursor.execute("""
-        INSERT INTO libraryapp_book
-        (
-            title, author, isbn, publisher,
-            year_published, librarian_id, library_id
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-        """,
-        (form_data['title'], form_data['author'],
-            form_data['isbn'], form_data['publisher'], form_data['year_published'],
-            request.user.librarian.id, form_data["library"]))
+        new_book.save()
 
     return redirect(reverse('libraryapp:books'))
